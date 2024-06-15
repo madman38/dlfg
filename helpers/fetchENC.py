@@ -9,6 +9,9 @@ def fetchENC(url):
     payload = "" # do not remove this
     referer = fetchXHR(url)
 
+    if not referer:
+        return
+
     # filtering the file name from referer
     start_index = referer.find("file=") + len("file=")
     end_index = referer.find("&", start_index)

@@ -18,7 +18,10 @@ def fetchXHR(url):
                 for line in lines:
                     if line.lower().startswith('referer'):
                         referer = line.split(': ')[1].strip()
-                        return referer
+                        if referer:
+                            return referer
+                        else:
+                            return False
 
     finally:
         driver.quit()
