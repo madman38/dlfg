@@ -13,15 +13,11 @@ def fetchXHR(url):
 
         for request in driver.requests:
             if request.response and request.headers.get('X-Requested-With') == 'XMLHttpRequest':
-                headers = str(request.headers)
-                lines = headers.strip().split('\n')
-                for line in lines:
-                    if line.lower().startswith('referer'):
-                        referer = line.split(': ')[1].strip()
-                        if referer:
-                            return referer
-                        else:
-                            return False
+                referer = request.headers["Referer"]
+                if referer:
+                    return referer
+                else:
+                    return False
 
     finally:
         driver.quit()

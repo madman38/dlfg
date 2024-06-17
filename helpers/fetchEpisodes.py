@@ -12,6 +12,10 @@ def fetchLinks(season):
 
     driver.get(f"https://www.wcofun.net/anime/family-guy-season-{season}") # you can change this if you want to download another cartoon from wcofun
 
+    # fetching and returning user agent to use it on web scraping
+    for request in driver.requests:
+        if request.response:
+            useragent = request.headers["User-Agent"]
     try:
         sidebar_right3_div = driver.find_element(By.XPATH, '//*[@id="sidebar_right3"]')
 
@@ -26,7 +30,7 @@ def fetchLinks(season):
                 links.append(href)
 
         links = links[::-1] # reversing the list for the actual episode order
-        return links
+        return links, useragent
     
-    except: return "error: season not found"
+    except: return
     finally: driver.quit()

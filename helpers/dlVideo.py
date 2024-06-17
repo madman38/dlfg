@@ -2,15 +2,15 @@ from helpers.fetchENC import fetchENC
 import os
 import requests
 
-def download_video(url, filename, directory):
+def download_video(url, filename, directory, useragent):
     '''Downloads the episode'''
     headers = {
-        'User-Agent': "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:126.0) Gecko/20100101 Firefox/126.0",
+        'User-Agent': useragent,
         'X-Requested-With': "XMLHttpRequest",
     }
 
     base_url = "https://cdn.cizgifilmlerizle.com/getvid?evid="
-    enc = fetchENC(url)
+    enc = fetchENC(url, useragent)
 
     url = base_url + enc
     print(f">> video link found: {url}\n")

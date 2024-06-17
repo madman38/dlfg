@@ -44,7 +44,9 @@ def main():
                 sys.exit(1)
 
         print(">> fetching the episode links")
-        links = fetchLinks(season)
+        links_useragent = fetchLinks(season)
+        links = links_useragent[0]
+        useragent = links_useragent[1] # getting useragent to use it on webscraping
         episode_count = len(links)
         print(f">> there are {episode_count} episodes on season {season}")
 
@@ -68,7 +70,7 @@ def main():
             
             print(f">> preparing to download {filename} from this link: {url}")
             start_timer = time.time()
-            if download_video(url, f"{filename}.mp4", directory):
+            if download_video(url, f"{filename}.mp4", directory, useragent):
                 end_timer = time.time()
                 print(f">> {filename} downloaded successfully. {episode_number}/{episode_count} ({round(end_timer - start_timer, 2)} seconds)\n")
             else:

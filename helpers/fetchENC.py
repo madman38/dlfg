@@ -2,7 +2,7 @@ from helpers.fetchXHR import fetchXHR
 import http.client
 import json
 
-def fetchENC(url):
+def fetchENC(url, useragent):
     '''Fetches the enc value from specific xhr of given wcofun episode url'''
     conn = http.client.HTTPSConnection("embed.watchanimesub.net")
 
@@ -15,10 +15,10 @@ def fetchENC(url):
     # filtering the file name from referer
     start_index = referer.find("file=") + len("file=")
     end_index = referer.find("&", start_index)
-    filteredReferer = referer[start_index:end_index][:-4] + ".mp4"  # removing .flv and adding .mp4
+    filteredReferer = referer[start_index:end_index][:-4] + ".mp4"  # replacing .flv with .mp4
 
     headers = {
-        'User-Agent': "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:126.0) Gecko/20100101 Firefox/126.0",
+        'User-Agent': useragent,
         'X-Requested-With': "XMLHttpRequest",
         'Referer': referer
         }
