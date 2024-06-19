@@ -24,6 +24,11 @@ DLFG is a tool to download episodes of the animated TV show "Family Guy" from [W
     pip install -r requirements.txt
     ```
 
+3. Run the file:
+    ```sh
+    python3 main.py
+    ```
+
 ## Contributing
 
 If you want to contribute to this project, please fork the repository and create a pull request with your changes.
