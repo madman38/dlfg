@@ -76,7 +76,10 @@ def main():
             else:
                 print(f">> error: {filename} failed to download. moving on...\n")
 
-        print(f"\n\n>> Season {season} downloaded successfully.\n\nPress Enter to exit.")
+        print(f"\n\n>> Season {season} downloaded successfully.\n\n")
+
+    input("All desired seasons downloaded successfully.\n\nPress Enter to exit.")
+    sys.exit(1)
 
 if __name__ == "__main__":
     main()
