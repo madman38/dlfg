@@ -12,9 +12,12 @@ def download_video(url, filename, directory, useragent):
     base_url = "https://cdn.cizgifilmlerizle.com/getvid?evid="
     enc = fetchENC(url, useragent)
 
-    url = base_url + enc
-    print(f">> video link found: {url}\n")
-    print(">> downloading episode")
+    if enc:
+        url = base_url + enc
+        print(f">> video link found: {url}\n")
+        print(">> downloading episode")
+    else:
+        return False
 
     try:
         response = requests.get(url, headers=headers)
