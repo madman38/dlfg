@@ -16,8 +16,8 @@ def main():
 
     # validate input
     if end_season > 22:
-        print(">> error: ending season cannot be more than 22.")
-        sys.exit(1)
+        print(">> error: ending season cannot be more than 22. Setting ending season value to 22...")
+        end_season = 22
 
     elif end_season < start_season:
         print(">> error: ending season cannot be less than the starting season.")
