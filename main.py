@@ -28,12 +28,14 @@ def main():
 
     # loop through each season in the specified range
     for season in range(start_season, end_season + 1):
+        print(f">> downloading season {season}")
+
         # create directory to download the episodes into
         if not os.path.exists("FamilyGuy"): os.makedirs("FamilyGuy")
 
         directory = "FamilyGuy/" + "S" + str(season)
         if not os.path.exists(directory):
-            print(">> creating directory for season")
+            print(f">> creating directory for season {season}")
             os.makedirs(directory)
         else:
             choose = input(f">>> there is a directory named 'S{season}'. would you want to overwrite it? (y/n): ")
@@ -76,7 +78,7 @@ def main():
             else:
                 print(f">> error: {filename} failed to download. moving on...\n")
 
-        print(f"\n\n>> Season {season} downloaded successfully.\n\n")
+        print(f"\n>> Season {season} downloaded successfully.\n")
 
     input("All desired seasons downloaded successfully.\n\nPress Enter to exit.")
     sys.exit(1)
