@@ -9,7 +9,8 @@ def download_video(url, filename, directory, useragent):
         'X-Requested-With': "XMLHttpRequest",
     }
 
-    enc, server = fetchENC(url, useragent)
+    try: enc, server = fetchENC(url, useragent)
+    except: return False
 
     if enc:
         url = server + "/getvid?evid=" + enc

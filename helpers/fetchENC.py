@@ -7,10 +7,16 @@ def fetchENC(url, useragent):
     conn = http.client.HTTPSConnection("embed.watchanimesub.net")
 
     payload = "" # do not remove this
-    referer = fetchXHR(url)
 
-    while not referer:
+    # fetching XHR
+    for i in range(3):
         referer = fetchXHR(url)
+        if referer: break
+        else:
+            print(f">> XHR not found. trying again...({i+1})")
+    
+    if not referer:
+        return
 
     # extracting parameters
     base_url, params_part = referer.split('?')
