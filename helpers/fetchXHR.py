@@ -13,7 +13,7 @@ def fetchXHR(url):
 
         for request in driver.requests:
             if request.response and request.headers.get('X-Requested-With') == 'XMLHttpRequest':
-                referer = request.headers["Referer"]
+                referer = request.url
                 if referer:
                     return referer
                 else:

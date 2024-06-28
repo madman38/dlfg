@@ -9,11 +9,10 @@ def download_video(url, filename, directory, useragent):
         'X-Requested-With': "XMLHttpRequest",
     }
 
-    base_url = "https://cdn.cizgifilmlerizle.com/getvid?evid="
-    enc = fetchENC(url, useragent)
+    enc, server = fetchENC(url, useragent)
 
     if enc:
-        url = base_url + enc
+        url = server + "/getvid?evid=" + enc
         print(f">> video link found: {url}\n")
         print(">> downloading episode")
     else:

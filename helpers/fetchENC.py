@@ -9,13 +9,23 @@ def fetchENC(url, useragent):
     payload = "" # do not remove this
     referer = fetchXHR(url)
 
-    if not referer:
-        return
+    while not referer:
+        referer = fetchXHR(url)
 
-    # filtering the file name from referer
-    start_index = referer.find("file=") + len("file=")
-    end_index = referer.find("&", start_index)
-    filteredReferer = referer[start_index:end_index][:-4] + ".mp4"  # replacing .flv with .mp4
+    # extracting parameters
+    base_url, params_part = referer.split('?')
+
+    parameters = params_part.split('&')
+
+    v_param = None
+    embed_param = None
+
+    for param in parameters:
+        key, value = param.split('=')
+        if key == 'v':
+            v_param = value
+        elif key == 'embed':
+            embed_param = value
 
     headers = {
         'User-Agent': useragent,
@@ -23,11 +33,12 @@ def fetchENC(url, useragent):
         'Referer': referer
         }
 
-    conn.request("GET", "/inc/embed/getvidlink.php?v=cizgi%2F"+filteredReferer, payload, headers)
+    conn.request("GET", f"/inc/embed/getvidlink.php?v={v_param}&embed={embed_param}", payload, headers)
 
     res = conn.getresponse()
     data = res.read()
 
     response = data.decode("utf-8")
     enc = json.loads(response)["enc"] # filters the 'enc' value from xml response
-    return enc
+    server = json.loads(response)["server"] # filters the 'server' value from xml response
+    return enc, server
