@@ -10,6 +10,7 @@ DLFG is a tool to download episodes of the animated TV show "Family Guy" from [W
 - Requests
 - Selenium
 - Selenium-Wire
+- blinker==1.7.0
 
 ### Installation
 
