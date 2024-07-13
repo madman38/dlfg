@@ -17,12 +17,11 @@ DLFG is a tool to download episodes of the animated TV show "Family Guy" from [W
 1. Clone the repository:
     ```sh
     git clone https://github.com/madman38/dlfg.git
-    cd dlfg
     ```
 
 2. Install the required dependencies:
     ```sh
-    pip install -r requirements.txt
+    pip install requests selenium selenium-wire blinker==1.7.0
     ```
 
 3. Run the file:
