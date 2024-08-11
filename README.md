@@ -26,7 +26,7 @@ DLFG is a tool to download episodes of the animated TV show "Family Guy" from [W
 
 3. Run the file:
     ```sh
-    python3 main.py
+    python main.py
     ```
 
 ## Contributing
