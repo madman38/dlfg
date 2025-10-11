@@ -1,5 +1,13 @@
 # DLFG - Download Family Guy
 
+> [!NOTE]
+> DLFG is no longer being maintained.
+> Thanks to everyone who used it!
+>
+> Check out [wco-dl](https://github.com/madman38/wco-dl) - new tool that can download any cartoon/anime from WCOfun.
+
+wcofun-cli is a tool to download cartoons from [WCOfun](https://www.wcofun.net/). This tool automates the process of fetching and downloading episodes for offline viewing.
+
 DLFG is a tool to download episodes of the animated TV show "Family Guy" from [WCOfun](https://www.wcofun.net/). This tool automates the process of fetching and downloading episodes for offline viewing.
 
 ## Setup and Installation
